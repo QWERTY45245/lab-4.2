@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+int main()
+{
+	double x, xp, xk, dx, A, B, y,ctg;
+	cout << "xp = "; cin >> xp;
+	cout << "xk = "; cin >> xk;
+	cout << "dx = "; cin >> dx;
+	cout << fixed;
+	cout << "---------------------------" << endl;
+	cout << "|" << setw(5) << "x" << " |"
+		<< setw(7) << "y" << " |" << endl;
+	cout << "---------------------------" << endl;
+	x = xp;
+	while (x <= xk)
+	{
+		ctg = cos((1 + log(x) / 3)) / sin((1 + log(x) / 3));
+		A = 2+(6*x);
+		if (x <= 0)
+			B = log(cos(x)) + (x * x * x * x * x);
+		else
+			if (x > 3)
+				B = (12 * x) - (x * x * x * x * x * x * x * x);
+			else
+				B = ctg;
+		y = A + B;
+		cout << "|" << setw(7) << setprecision(2) << x
+			<< " |" << setw(10) << setprecision(3) << y
+			<< " |" << endl;
+		x += dx;
+	}
+	cout << "---------------------------" << endl;
+	return 0;
+}
